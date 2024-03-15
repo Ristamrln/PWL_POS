@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {   
-        // // tambah data user dengan Eloquent Model
+        // tambah data user dengan Eloquent Model
         // $data = [
         //     'level_id' => 2,
         //     'username' => 'manager_tiga',
@@ -21,7 +21,8 @@ class UserController extends Controller
         // UserModel::create($data);
         
         //coba akses model UserModel
-        $user = UserModel::where('username', 'manager9')->firstOrFail(); //ambil semua data dari m_user
+        $user = UserModel::where('level_id', 2)->count(); //ambil semua data dari m_user
+        // dd($user);
         return view('user', ['data' => $user]);
 }
 }
