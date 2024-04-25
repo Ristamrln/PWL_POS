@@ -311,10 +311,6 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'kategori',
-            'url' => 'kategori',
-        ],
-        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
