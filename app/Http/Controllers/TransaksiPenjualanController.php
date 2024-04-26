@@ -153,28 +153,20 @@ class TransaksiPenjualanController extends Controller
      */
     public function show(string $id)
     {
-        $details = PenjualanDetail::with('barang', 'penjualan')->where('penjualan_id', $id)->get();
+        $penjualan = Penjualan::with(['user', 'detail'])->find($id);
 
-        $breadcrumb = (object)[
-            'title' => 'Detail Penjualan',
+        $breadcrumb = (object) [
+            'title' => 'Daftar Penjualan',
             'list' => ['Home', 'Penjualan', 'Detail']
         ];
 
-        $page = (object)[
-            'title' => 'Detail Penjualan'
+        $page = (object) [
+            'title' => 'Detail penjualan'
         ];
 
-        /**
-         * Set active menu
-         */
         $activeMenu = 'penjualan';
 
-        $totals = 0;
-        foreach ($details as $detail) {
-            $totals += $detail->harga;
-        }
-
-        return view('penjualan.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'details' => $details, 'total' => $totals, 'activeMenu' => $activeMenu]);
+        return view('penjualan.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'penjualan' => $penjualan, 'activeMenu' => $activeMenu]);
     }
 
     /**
