@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Kategori;
 use App\Models\KategoriModel;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -29,7 +30,7 @@ class KategoriDataTable extends DataTable
     /** 
      * Get the query source of dataTable. 
      */
-    public function query(KategoriModel $model): QueryBuilder
+    public function query(Kategori $model): QueryBuilder
     {
         return $model->newQuery();
     }
